@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getAuth, GeogleAuthProvider} from "Firebase/auth"
+import { getAuth, GeogleAuthProvider} from "Firebase/auth";
 
 
 const firebaseConfig = {

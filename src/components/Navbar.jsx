@@ -30,7 +30,7 @@ const Navbar = () => {
           <a href="/">Agents</a>
           <a href="/">Contact us</a>
           <button className="button">
-            <a href="/">Log-in</a>
+            <p> Log-in</p>
           </button>
         </div>
         <div className="menu-icon" onClick={() =>setMenuOpened((prev) => !prev)}>
