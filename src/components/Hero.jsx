@@ -1,38 +1,72 @@
 import React from 'react'
 import './Hero.css'
 import './index.css'
+import CountUp from 'react-countup';
+import { HiLocationMarker } from 'react-icons/hi';
 
 const Hero = () => {
   return (
     <section className="hero-wrapper">
-      <div className="paddings innerwidth flexCenter hero-Container " >
+      <div className="paddings innerWidth flexCenter hero-Container " >
         {/* left side */}
-        <div className=" FlexColstart hero-left">
+        <div className="flexColStart hero-left">
           <div className="hero-title">
+            <div className="orange-circle"></div>
             <h1>
-              Find Your <br/>Dream Home <br/>Today
+              Find Your Dream<br/> Home Today <br/>
             </h1>
           </div>
-          <div className="flexColstart hero-des">
+          <div className="flexColStart hero-des">
             <span>
-             are you ready to strat the search for your homr? Look no futher
+             are you ready to strat the search for your home? 
             </span>
             <span>
-             Move-in is Here for you.
+            Look no futher Move-in is Here for you.
             </span>
-            <div className="search-bar">
-              Search bar
+            <div className="flexCenter search-bar">
+              <HiLocationMarker color="var(--blue)" size={25} />
+              <input type="text" />
+              <button className="button">Search</button>
             </div>
+            </div>
+        <div className="FlexCenter stats">
+          <div className="flexColCenter stat">
+            <span>
+              <CountUp start={848} end={3930} duration={4}/>
+              <span>+</span>
+              </span>
+              <span> Prenium Products</span>
+
           </div>
+          </div>
+        <div className="FlexCenter stats">
+          <div className="flexColCenter stat">
+            <span>
+              <CountUp start={238} end={1250} duration={4}/>
+              <span>+</span>
+              </span>
+              <span>Satisfied Customers</span>
+       
+          </div>
+          </div>
+        <div className="FlexCenter stats">
+          <div className="flexColCenter stat">
+              <span>
+              <CountUp end={10}/>
+              <span>+</span>
+              </span>
+              <span>Awards Winnings</span>
+          </div>
+          </div>
+       
         </div>
         {/* right side */}
         <div className="flexCenter hero-right">
           <div className="image-container">
-            <img src="./hero-image.png" alt="" />
+            <img src="./public\images\hero-image.png" alt="" />
           </div>
         </div>
-
-</div>
+      </div>
     </section>
    
   )

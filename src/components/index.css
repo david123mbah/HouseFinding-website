@@ -87,7 +87,7 @@ a {
   font-weight: 500;
   padding: 0.6rem 1.4rem;
   color: white;
-  background-color: aquamarine;
+  background-color: rgb(127, 146, 255);
   border:none;
   border-radius: 20px;
   transition: all 300ms ease-in;
