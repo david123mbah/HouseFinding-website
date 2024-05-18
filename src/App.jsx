@@ -1,7 +1,8 @@
-
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 
 const App = () => {
@@ -9,7 +10,14 @@ const App = () => {
    <div className="App">
     <div>
       <div className="white-gradient" />
-    <Navbar/>
+    
+    
+     <Router>
+      <Navbar />
+      <Routes>
+      <Route path ="/login" element={<Login />} />
+      </Routes>
+    </Router>
     <Hero />
      <Home />
     </div>
