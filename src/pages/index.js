@@ -5,5 +5,5 @@ import Contact from "./Contact";
 import Login from "./Login";
 import Services from'./Services';
 import Agents from './Agents';
-
-export { Home, About, Projects, Contact, Login, Services ,Agents};
+import According from './According'
+export { Home, About, Projects, Contact, Login, Services ,Agents, According};

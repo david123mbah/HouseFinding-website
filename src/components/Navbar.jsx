@@ -29,9 +29,11 @@ const Navbar = () => {
           <a href="/">Home</a>
           <a href="/">About us</a>
           <a href="/">Property</a>
-          <a href="/">Services</a>
+          
           <a href="/">Agents</a>
+
           <a href="/">Contact us</a>
+          
           <NavLink className="button" to="/Login" activeClassName="active">
             <p> Log-in</p>
           </NavLink>

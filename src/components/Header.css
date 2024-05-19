@@ -4,7 +4,8 @@
 }
 
 .h-menu {
-    gap: 2rem;
+    gap: 3rem;
+    
 }
 .h-menu>* :hover {
     cursor: pointer;

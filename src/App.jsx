@@ -1,8 +1,8 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Projects from "./pages/Projects";
 
 
 const App = () => {
@@ -10,16 +10,15 @@ const App = () => {
    <div className="App">
     <div>
       <div className="white-gradient" />
-    
-    
      <Router>
       <Navbar />
       <Routes>
       <Route path ="/login" element={<Login />} />
+      <Route path ="/Navbar" element={<Navbar />} />
       </Routes>
     </Router>
     <Hero />
-     <Home />
+     <Projects />
     </div>
    </div>
   );
