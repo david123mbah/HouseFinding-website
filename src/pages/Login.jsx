@@ -1,57 +1,174 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { useAuth } from '../server/context';
 
 const Login = () => {
+  useAuth();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
+    try {
+      setIsSigningIn(true);
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log('User signed in:', user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setError(errorMessage);
+          setIsSigningIn(false);
+        });
+    } catch (error) {
+      console.error('Sign in error:', error);
+      setError('Error signing in');
+      setIsSigningIn(false);
+    }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    try {
+      setIsSigningIn(true);
+      const auth = getAuth();
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log('User signed up:', user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setError(errorMessage);
+          setIsSigningIn(false);
+        });
+    } catch (error) {
+      console.error('Sign up error:', error);
+      setError('Error creating account');
+      setIsSigningIn(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsSigningIn(true);
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider)
+        .then((result) => {
+          // Google sign-in successful
+          const user = result.user;
+          console.log('User signed in with Google:', user);
+        })
+        .catch((error) => {
+          // Google sign-in error
+          console.error('Google sign-in error:', error);
+          setError('Error signing in with Google');
+          setIsSigningIn(false);
+        });
+    } catch (error) {
+      console.error('Google sign-in error:', error);
+      setError('Error signing in with Google');
+      setIsSigningIn(false);
+    }
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setError('');
+  };
+
   return (
     <div>
-      <main className="w-full h-screen flex self-center place-content-center place-items-center">
-        <div className="w-96 text-gray-600 space-y-5 p-4 shadow-xl border rounded-xl">
-          <div className="text-center">
-            <div className="mt-2">
-              <h3 className="text-gray-800 text-xl font-semibold sm:text-2xl">Welcome Back</h3>
-            </div>
+      <button
+        type="button"
+        onClick={handleOpenModal}
+        className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      >
+        Sign In/Sign Up
+      </button>
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={handleCloseModal}
+        contentLabel="Login/Signup Modal"
+        className="modal bg-white p-8 rounded-lg shadow-md w-full max-w-md"
+        overlayClassName="modal-overlay fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center"
+      >
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          {isSigningIn ? 'Sign In' : 'Sign Up'}
+        </h2>
+        <form onSubmit={isSigningIn ? handleSignIn : handleSignUp} className="space-y-4">
+          <div>
+            <label htmlFor="email" className="block font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              required
+            />
           </div>
-          <form className="space-y-5">
-            <div>
-              <label className="text-sm text-gray-600 font-bold">Email</label>
-              <input
-                type="email"
-                autoComplete="email"
-                required
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-              />
-            </div>
-            <div>
-              <label className="text-sm text-gray-600 font-bold">Password</label>
-              <input
-                type="password"
-                autoComplete="current-password"
-                required
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full px-4 py-2 text-white font-medium rounded-lg bg-indigo-600 hover:bg-indigo-700 hover:shadow-xl transition duration-300"
-            >
-              Sign In
-            </button>
-          </form>
-          <p className="text-center text-sm">Don't have an account? <div className="hover:underline font-bold">Sign up</div></p>
-          <div className="flex flex-row text-center w-full">
-            <div className="border-b-2 mb-2.5 mr-2 w-full"></div>
-            <div className="text-sm font-bold w-fit">OR</div>
-            <div className="border-b-2 mb-2.5 ml-2 w-full"> </div>
+          <div>
+            <label htmlFor="password" className="block font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              required
+            />
           </div>
           <button
-            className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-blue-100 transition duration-300 active:bg-blue-100"
+            type="submit"
+            className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            disabled={isSigningIn}
           >
-            <p>Sign-up</p>
-            <svg className="w-5 h-5" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* SVG paths removed */}
-            </svg>
+            {isSigningIn ? 'Signing In...' : 'Sign In'}
+          </button>
+        </form>
+        <button
+          type="button"
+          onClick={handleGoogleSignIn}
+          className="w-full bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 mt-4"
+        >
+          Sign in with Google
+        </button>
+        {error && <p className="text-red-500 mt-4">{error}</p>}
+        <div className="flex items-center justify-center mt-4">
+          <button
+            type="button"
+            onClick={() => setIsSigningIn((prevState) => !prevState)}
+            className="text-indigo-500 font-semibold hover:underline"
+          >
+            {isSigningIn ? 'Don\'t have an account? Sign Up' : 'Already have an account? Sign In'}
           </button>
         </div>
-      </main>
+      </Modal>
     </div>
   );
 };

@@ -3,10 +3,12 @@ import './Header.css';
 import './index.css';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../server/context';
 
 
 
 const Navbar = () => {
+   const { currentUser } =useAuth()
   
   const [menuOpened, setMenuOpened] = useState(false);
   const getMenuStyles = (menuOpened) => {
@@ -33,13 +35,16 @@ const Navbar = () => {
           <a href="/">Agents</a>
 
           <a href="/">Contact us</a>
-          
+    
           <NavLink className="button" to="/Login" activeClassName="active">
             <p> Log-in</p>
           </NavLink>
         </div>
         <div className="menu-icon" onClick={() =>setMenuOpened((prev) => !prev)}>
         <BiMenuAltRight size={30} />
+      </div>
+      <div>
+        hello {currentUser.displayName ? currentUser.displayName : currentUser.email}
       </div>
      
       </div>

@@ -1,8 +1,8 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Projects from "./pages/Projects";
+import Hero from "./components/Hero/Hero";
 
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
       <Route path ="/Navbar" element={<Navbar />} />
       </Routes>
     </Router>
-    <Hero />
+    <Hero/>
      <Projects />
     </div>
    </div>
