@@ -4,11 +4,13 @@ import CountUp from 'react-countup';
 import { HiLocationMarker } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 
+
 const Hero = () => {
   return (
     <section className="hero-wrapper">
       <div className="paddings innerWidth flexCenter hero-Container " >
         {/* left side */}
+        <div className="white-gradient"> </div>
         <div className="flexColStart hero-left">
           <div className="hero-title">
             <div className="orange-circle"></div>
@@ -39,10 +41,10 @@ const Hero = () => {
         <div className="FlexCenter stats">
           <div className="flexColCenter stat">
             <span>
-              <CountUp start={848} end={3930} duration={4}/>
+              <CountUp start={800} end={3500} duration={4}/>
               <span>+</span>
               </span>
-              <span> Prenium Products</span>
+              <span> Premium Products</span>
 
           </div>
           
@@ -50,7 +52,7 @@ const Hero = () => {
         <div className="FlexCenter stats">
           <div className="flexColCenter stat">
             <span>
-              <CountUp start={238} end={1250} duration={4}/>
+              <CountUp start={250} end={1500} duration={4}/>
               <span>+</span>
               </span>
               <span>Satisfied Customers</span>
@@ -60,7 +62,7 @@ const Hero = () => {
         <div className="FlexCenter stats">
           <div className="flexColCenter stat">
               <span>
-              <CountUp end={10}/>
+              <CountUp end={50}/>
               <span>+</span>
               </span>
               <span>Awards Winnings</span>
