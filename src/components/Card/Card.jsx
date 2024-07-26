@@ -9,6 +9,7 @@ function Card({props}) {
       <h2 className="card-title text-xl font-bold">{prop.location}</h2>
       <p className="card-text text-gray-500">{prop.category}</p>
       
+      
     </div>
   ));
 
@@ -35,16 +36,7 @@ function Card({props}) {
             See the latest uploaded properties in our platform
           </p>
         </div>
-        <div className="search">
-          <input
-            type="text"
-            className="border-gray-300 border rounded-md px-4 py-2 mr-2"
-            placeholder="Search Location"
-          />
-          <button className="bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2 button">
-            Search
-          </button>
-        </div>
+        
       </div>
 
       <div className="property grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

@@ -6,6 +6,7 @@ const ContactForm = ({ existingProperty = {}, updateCallback = () => {} }) => {
   const [image, setImage] = useState(null);
   const [location, setLocation] = useState(existingProperty.location || "");
   const [description, setDescription] = useState(existingProperty.description || "");
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const updating = Object.keys(existingProperty).length !== 0;
 
@@ -33,6 +34,7 @@ const ContactForm = ({ existingProperty = {}, updateCallback = () => {} }) => {
         const data = await response.json();
         alert(data.message);
       } else {
+        setShowSuccessMessage(true);
         updateCallback();
       }
     } catch (error) {
@@ -43,6 +45,11 @@ const ContactForm = ({ existingProperty = {}, updateCallback = () => {} }) => {
 
   return (
     <form onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
+      {showSuccessMessage && (
+        <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
+          <p>Property created successfully!</p>
+        </div>
+      )}
       <div className="mb-4">
         <label className="block text-gray-700 font-bold mb-2" htmlFor="category">
           Category:

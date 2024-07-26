@@ -80,7 +80,7 @@ const Hero = () => {
                type: "spring"
              }}
           >
-            <img src="./public\images\hero-image.png" alt="" />
+            <img src="./hero-image.png" alt="" />
           </motion.div>
         </div>
       </div>
@@ -90,4 +90,3 @@ const Hero = () => {
 }
 
 export default Hero
-

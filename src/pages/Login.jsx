@@ -115,7 +115,7 @@ const Login = () => {
         onRequestClose={handleCloseModal}
         contentLabel="Login/Signup Modal"
         className="modal bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-auto mt-20"
-        overlayClassName="modal-overlay fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center"
+        overlayClassName="modal-overlay fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-580 flex items-center justify-center"
       >
         <h2 className="text-2xl font-bold mb-6 text-center text-indigo-500">
           {isSigningIn ? 'Sign In' : 'Sign Up'}
@@ -146,7 +146,7 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-black-800 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />
           </div>
           {error && (
