@@ -21,7 +21,7 @@ const ContactList = ({properties, updateProperty, updateCallback}) => {
 
     return (
     <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
-        <h2 className="text-2xl font-bold mb-4">Properties</h2>
+        <h2 className="text-2xl font-bold mb-4">Jobs</h2>
         <table className="w-full border-collapse">
             <thead>
                 <tr className="bg-gray-200">

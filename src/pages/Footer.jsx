@@ -4,50 +4,60 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-content">
+    <footer className="bg-gray-800 text-gray-200 py-10">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div className="about-us">
-          <h3>About Us</h3>
-          <p>
-            Our house searching app is designed to make the process of finding
-            your dream home easier and more efficient. With our powerful search
-            tools and comprehensive listings, you can discover the perfect
-            property that meets your needs and budget.
+          <h3 className="text-xl font-semibold mb-4">About Us</h3>
+          <p className="text-gray-400">
+            Our job portal is designed to connect talented professionals with exciting career opportunities.
+            We provide a platform for job seekers to explore diverse roles and for employers to find the perfect
+            candidates to grow their teams.
           </p>
         </div>
-        <div className="location">
-          <h3>Location</h3>
-          <p>
-            Our headquarters is located at 123 Main Street, Anytown USA. We
-            operate nationwide, with a focus on providing the best service to
-            our customers across the country.
-          </p>
+        <div className="for-job-seekers">
+          <h3 className="text-xl font-semibold mb-4">For Job Seekers</h3>
+          <ul className="space-y-2">
+            <li><a href="#" className="text-gray-400 hover:text-white">Search Jobs</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-white">Create Profile</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-white">Job Alerts</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-white">Career Advice</a></li>
+          </ul>
+        </div>
+        <div className="for-employers">
+          <h3 className="text-xl font-semibold mb-4">For Employers</h3>
+          <ul className="space-y-2">
+            <li><a href="#" className="text-gray-400 hover:text-white">Post a Job</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-white">Search Resumes</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-white">Recruitment Solutions</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-white">Pricing Plans</a></li>
+          </ul>
         </div>
         <div className="contact-info">
-          <h3>Contact Info</h3>
-          <p>+237 677880739</p>
-          <p>housesystem@gmail.com</p>
+          <h3 className="text-xl font-semibold mb-4">Contact Info</h3>
+          <p className="text-gray-400 mb-2">+1 (555) 123-4567</p>
+          <p className="text-gray-400 mb-2">support@jobportal.com</p>
+          <p className="text-gray-400">789 Career Avenue, Employment City, 54321</p>
         </div>
         <div className="follow-us">
-          <h3>Follow Us</h3>
-          <div className="social-media-icons">
-  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-    <FontAwesomeIcon icon={faFacebookF} />
-  </a>
-  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-    <FontAwesomeIcon icon={faTwitter} />
-  </a>
-  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-    <FontAwesomeIcon icon={faInstagram} />
-  </a>
-  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-    <FontAwesomeIcon icon={faLinkedinIn} />
-  </a>
-</div>
+          <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+          <div className="flex space-x-4">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+              <FontAwesomeIcon icon={faFacebookF} size="lg" />
+            </a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+              <FontAwesomeIcon icon={faTwitter} size="lg" />
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+              <FontAwesomeIcon icon={faInstagram} size="lg" />
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+              <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
+            </a>
+          </div>
         </div>
       </div>
-      <div className="copyright">
-        &copy; 2023 House Searching App. All rights reserved.
+      <div className="mt-8 border-t border-gray-700 pt-6 text-center text-gray-500">
+        &copy; {new Date().getFullYear()} Job Portal. All rights reserved.
       </div>
     </footer>
   );

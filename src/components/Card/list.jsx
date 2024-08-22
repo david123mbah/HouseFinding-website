@@ -123,7 +123,7 @@ function App() {
   return (
     <>
       <ContactList properties={properties} updateProperty = {openEditModal} updateCallback={onUpdate}/>
-      <button onClick={openCreateModal}>Create New Property</button>
+      <button onClick={openCreateModal}>Create New Job</button>
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">

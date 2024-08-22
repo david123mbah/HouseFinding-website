@@ -1,105 +1,107 @@
-import React from 'react'
-import './contact.css'
-import { MdCall } from 'react-icons/md'
-import { BsFillChatDotsFill } from 'react-icons/bs'
-import { HiChatBubbleBottomCenter } from 'react-icons/hi2'
+import React from 'react';
+import { MdCall } from 'react-icons/md';
+import { BsFillChatDotsFill } from 'react-icons/bs';
+import { HiChatBubbleBottomCenter } from 'react-icons/hi2';
 
 const Contact = () => {
   // Function to open WhatsApp with pre-filled message
   const openWhatsApp = (phoneNumber, message) => {
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
-  }
+  };
 
   return (
-    <section className='c-wrapper'>
-      <div className="padding innerwidth flexcenter c-container">
-        {/* left side */}
-        <div className="flexColStart c-left">
-          <span className='orangeText'>Our contact</span>
-          <span className='primaryText'>Easy to Contact Us</span>
-          <span className='secondaryText'>We are always ready to help by provindg quality and affordable houses that suit your taste</span>
+    <section className="py-16 bg-gray-100">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        {/* Left side */}
+        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+          <h2 className="text-3xl font-bold text-blue-600 mb-4">Get in Touch</h2>
+          <p className="text-gray-700 mb-8">
+            We are always ready to assist you. Reach out to us through any of the following methods.
+          </p>
 
-          <div className="flexColStart contactModes">
-            {/* first row */}
-            <div className="flexStart row">
-              <div className="flexColCenter mode">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <MdCall size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className='primaryText'>Call</span>
-                    <span className='secondaryText'>652892462</span>
-                  </div>
-                </div>
-                <div className="flexCenter button" onClick={() => openWhatsApp('652892462', 'Hello!')}>
-                  Call Now
-                </div>
+          <div className="space-y-6">
+            {/* Call */}
+            <div className="flex items-center space-x-4">
+              <div className="p-4 bg-blue-600 text-white rounded-full">
+                <MdCall size={25} />
               </div>
-
-              {/* second mode*/}
-              <div className="flexColCenter mode">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <BsFillChatDotsFill size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className='primaryText'>Chat</span>
-                    <span className='secondaryText'>652892462</span>
-                  </div>
-                </div>
-                <div className="flexCenter button" onClick={() => openWhatsApp('652892462', 'Hello!')}>
-                  Chat Now
-                </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">Call Us</h3>
+                <p className="text-gray-600">652892462</p>
               </div>
+              <button
+                onClick={() => openWhatsApp('652892462', 'Hello!')}
+                className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition"
+              >
+                Call Now
+              </button>
             </div>
 
-            {/* second row */}
-            <div className="flexStart row">
-              <div className="flexColCenter mode">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <BsFillChatDotsFill size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className='primaryText'>Video Call</span>
-                    <span className='secondaryText'>652892462</span>
-                  </div>
-                </div>
-                <div className="flexCenter button" onClick={() => openWhatsApp('652892462', 'Hello!')}>
-                  Video Call Now
-                </div>
+            {/* Chat */}
+            <div className="flex items-center space-x-4">
+              <div className="p-4 bg-blue-600 text-white rounded-full">
+                <BsFillChatDotsFill size={25} />
               </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">Chat with Us</h3>
+                <p className="text-gray-600">652892462</p>
+              </div>
+              <button
+                onClick={() => openWhatsApp('652892462', 'Hello!')}
+                className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition"
+              >
+                Chat Now
+              </button>
+            </div>
 
-              {/* fourth mode*/}
-              <div className="flexColCenter mode">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <HiChatBubbleBottomCenter size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className='primaryText'>Message</span>
-                    <span className='secondaryText'>652892462</span>
-                  </div>
-                </div>
-                <div className="flexCenter button" onClick={() => openWhatsApp('652892462', 'Hello!')}>
-                  Message Now
-                </div>
+            {/* Video Call */}
+            <div className="flex items-center space-x-4">
+              <div className="p-4 bg-blue-600 text-white rounded-full">
+                <HiChatBubbleBottomCenter size={25} />
               </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">Video Call Us</h3>
+                <p className="text-gray-600">652892462</p>
+              </div>
+              <button
+                onClick={() => openWhatsApp('652892462', 'Hello!')}
+                className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition"
+              >
+                Video Call Now
+              </button>
+            </div>
+
+            {/* Message */}
+            <div className="flex items-center space-x-4">
+              <div className="p-4 bg-blue-600 text-white rounded-full">
+                <HiChatBubbleBottomCenter size={25} />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">Send a Message</h3>
+                <p className="text-gray-600">652892462</p>
+              </div>
+              <button
+                onClick={() => openWhatsApp('652892462', 'Hello!')}
+                className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition"
+              >
+                Message Now
+              </button>
             </div>
           </div>
         </div>
 
         {/* Right side */}
-        <div className="c-right">
-          <div className="image-container">
-            <img src="./img2.png" alt="" /
+        <div className="w-full md:w-1/2 flex items-center justify-center">
+          <div className="relative">
+            <div className="bg-blue-600 p-10 rounded-full animate-pulse">
+              <MdCall className="text-white text-8xl" />
+            </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

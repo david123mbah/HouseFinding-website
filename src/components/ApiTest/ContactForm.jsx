@@ -44,82 +44,91 @@ const ContactForm = ({ existingProperty = {}, updateCallback = () => {} }) => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
-      {showSuccessMessage && (
-        <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
-          <p>Property created successfully!</p>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <form onSubmit={onSubmit} className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+        {showSuccessMessage && (
+          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded">
+            <p>Job information updated successfully!</p>
+          </div>
+        )}
+        <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center">
+          {updating ? "Update Property" : "Create New Property"}
+        </h2>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2" htmlFor="category">
+            Job Category:
+          </label>
+          <input
+            className="shadow-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            placeholder="e.g., Software Engineering"
+          />
         </div>
-      )}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="category">
-          Category:
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          id="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="cost">
-          Cost:
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          id="cost"
-          value={cost}
-          onChange={(e) => setCost(e.target.value)}
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="image">
-          Image:
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="file"
-          id="image"
-          onChange={(e) => setImage(e.target.files[0])}
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="location">
-          Location:
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          id="location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="description">
-          Description:
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <div className="flex items-center justify-between">
-        <button
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-            updating ? "bg-yellow-500 hover:bg-yellow-700" : ""
-          }`}
-          type="submit"
-        >
-          {updating ? "Update" : "Create"}
-        </button>
-      </div>
-    </form>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2" htmlFor="cost">
+            Salary Range:
+          </label>
+          <input
+            className="shadow-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            id="cost"
+            value={cost}
+            onChange={(e) => setCost(e.target.value)}
+            placeholder="e.g., $60,000 - $80,000"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2" htmlFor="image">
+            Job Image:
+          </label>
+          <input
+            className="shadow-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="file"
+            id="image"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2" htmlFor="location">
+            Location:
+          </label>
+          <input
+            className="shadow-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            id="location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="e.g., New York, NY"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2" htmlFor="description">
+            Job Description:
+          </label>
+          <textarea
+            className="shadow-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Provide a detailed description of the job..."
+            rows="4"
+          />
+        </div>
+        <div className="flex items-center justify-between">
+          <button
+            className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+              updating ? "bg-yellow-500 hover:bg-yellow-600" : ""
+            }`}
+            type="submit"
+          >
+            {updating ? "Update Property" : "Create Property"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

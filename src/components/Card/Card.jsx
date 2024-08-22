@@ -1,50 +1,55 @@
 import React from 'react';
 import './Card.css';
+import { BiTimeFive } from 'react-icons/bi';
 
-function Card({props}) {
-  const listitems = props.map((prop) => (
-    <div className="card" key={prop.property_id}  >
-      <img className="card-img" src={prop.image} alt="House Picture" />
-      <p className="card-text text-gray-500">{prop.cost} FCFA</p>
-      <h2 className="card-title text-xl font-bold">{prop.location}</h2>
-      <p className="card-text text-gray-500">{prop.category}</p>
-      
-      
-    </div>
-  ));
-
-  const proofs = [
-    { id: 1, value: "20+", var: "Years in the industry" },
-    { id: 2, value: "90%", var: "Customers satisfaction" },
-    { id: 3, value: "10K", var: "Properties Sold" },
-    { id: 4, value: "50+", var: "Country Served" },
-  ];
-
-  const socials = proofs.map((proof) => (
-    <div className="social-card" key={proof.id}>
-      <h2 className="socials-value text-2xl font-bold">{proof.value}</h2>
-      <p className="card-text text-gray-500">{proof.var}</p>
+function Card({ props }) {
+  const jobItems = props.map((job) => (
+    <div
+      key={job.property_id}
+      className="job-card w-full sm:w-[350px] p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+    >
+      <div className="card-header flex items-center mb-4">
+        <img className="w-20 h-20 object-cover rounded-full border-2 border-gray-200" src={job.image} alt="Company Logo" />
+        <div className="ml-4">
+          <h1 className="text-lg font-semibold text-gray-800">{job.location}</h1>
+          <h6 className="text-gray-600">{job.category}</h6>
+          <p className="text-md text-gray-700 mt-1">{job.cost} FCFA</p>
+        </div>
+      </div>
+      <p className="text-gray-600 mt-2">{job.description}</p>
+      <div className="flex justify-between mt-4">
+        <button className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300">
+          Show Details
+        </button>
+        <button className="bg-green-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-600 transition-colors duration-300">
+          Apply Now
+        </button>
+      </div>
     </div>
   ));
 
   return (
-    <div className="container mx-auto py-16">
-      <div className="heading">
-        <div className="title">
-          <h1 className="heady text-3xl font-bold mb-2">Explore Our Latest Properties</h1>
-          <p className="texty text-gray-700">
-            See the latest uploaded properties in our platform
-          </p>
+    <div className="container mx-auto py-16 px-4">
+      <div className="search-bar-container mb-12 flex justify-center">
+        <div className="relative w-full max-w-md">
+          <input
+            type="text"
+            placeholder="Search job titles, companies, locations..."
+            className="w-full py-3 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button className="absolute right-0 top-0 mt-2 mr-2 py-3 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300">
+            Search
+          </button>
         </div>
-        
       </div>
 
-      <div className="property grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {listitems}
+      <div className="heading text-center mb-12">
+        <h1 className="text-3xl font-bold mb-2 text-gray-800">Explore Job Opportunities</h1>
+        <p className="text-gray-600">Find your next career move with us</p>
       </div>
 
-      <div className="socialProof grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8">
-        {socials}
+      <div className="job-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {jobItems}
       </div>
     </div>
   );
